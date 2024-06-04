@@ -5,7 +5,7 @@ metadata:
   title: System Template
   description: Create a System to contain a set of application Components
 spec:
-  owner: service@example.com
+  owner: smongiar@redhat.com
   type: system
 
   parameters:
