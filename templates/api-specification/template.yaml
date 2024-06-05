@@ -44,7 +44,7 @@ spec:
           title: Mock Provider URL
           type: string
           description: Microcks Host
-          default: https://microcks-microcks.apps.cluster-n7s8n.dynamic.redhatworkshops.io
+          default: https://microcks-microcks.apps.developer-hub.fuse.integration-qe.com
 
   steps:
     - id: template
