@@ -15,6 +15,8 @@ spec:
         - owner
         - application
         - description
+        - cluster_domain
+
       properties:
         api_id:
           title: Name
@@ -54,6 +56,10 @@ spec:
           title: Apicurio Registry Group ID
           type: string
           default: com.redhat
+        cluster_domain:
+          title: Cluster domain
+          type: string
+          description: Cluster domain (like apps.example.com)  
 
   steps:
     - id: template
@@ -84,6 +90,18 @@ spec:
         deleteBranchOnMerge: true
         protectDefaultBranch: false
 
+    - id: webhook
+      name: webhook creation source repository
+      action: github:webhook
+      input: 
+        repoUrl: github.com?repo=${{ parameters.application.split("/")[1] }}-${{ parameters.api_id }}-api&owner=smongiar
+        webhookUrl: https://webhook-${{ parameters.application.split("/")[1] }}-${{ parameters.api_id }}-el.${{ parameters.cluster_domain }}
+        webhookSecret: 'mysecret'
+        events: ['push']
+        active: true
+        contentType: 'json'
+        insecureSsl: false     
+
     - id: template-system-pull-request
       name: render system pull request
       action: fetch:template
@@ -104,3 +122,4 @@ spec:
         title: add ${{ parameters.api_id }} API
         description: add ${{ parameters.api_id}} API
         sourcePath: ./system-gitops
+

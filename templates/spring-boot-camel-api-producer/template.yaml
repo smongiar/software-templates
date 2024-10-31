@@ -63,7 +63,7 @@ spec:
         cluster_domain:
           title: Cluster domain
           type: string
-          description: Cluster domain (like apps.example.com)    
+          description: Cluster domain (like apps.example.com)
 
   steps:
     - id: template
@@ -99,9 +99,9 @@ spec:
     - id: webhook
       name: webhook creation source repository
       action: github:webhook
-      input: 
+      input:
         repoUrl: github.com?repo=${{ parameters.application.split("/")[1] }}-${{ parameters.component_id }}-service&owner=smongiar
-        webhookUrl: https://webhook-{{ parameters.component_id }}-el.{{ parameters.cluster_domain }}
+        webhookUrl: https://webhook-${{ parameters.application.split("/")[1] }}-${{ parameters.component_id }}-el.${{ parameters.cluster_domain }}
         webhookSecret: 'mysecret'
         events: ['push']
         active: true
