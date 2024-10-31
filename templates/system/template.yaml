@@ -67,7 +67,7 @@ spec:
       action: github:webhook
       input: 
         repoUrl: github.com?repo=${{ parameters.application_id }}-system&owner=smongiar
-        webhookUrl: https://webhook-{{ parameters.application_id }}-el.{{ parameters.cluster_domain }}
+        webhookUrl: https://webhook-${{ parameters.application_id }}-el.${{ parameters.cluster_domain }}
         webhookSecret: 'mysecret'
         events: ['push']
         active: true
