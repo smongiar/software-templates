@@ -63,12 +63,22 @@ spec:
       workspace: shared-data
   {%- endif %}
   {%- if values.service_registry_provider_url %}
-  - name: register-apicurio
+  - name: clean-artifacts
     taskRef:
       name: maven
       kind: ClusterTask
     runAfter: 
       - fetch-source
+    params:
+    - name: GOALS
+      value: 
+        - dependency:purge-local-repository
+  - name: register-apicurio
+    taskRef:
+      name: maven
+      kind: ClusterTask
+    runAfter: 
+      - clean-artifacts
     params:
     - name: GOALS
       value: 
