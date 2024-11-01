@@ -15,7 +15,7 @@ spec:
       values: |
         domain: smongiar
         system: ${{values.application.split("/")[1]}}
-        component: ${{ values.component_id }}
+        component: ${{ values.api_id }}
   destination:
     server: https://kubernetes.default.svc
     namespace: ${{values.application.split("/")[1]}}-build
