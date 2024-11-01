@@ -14,8 +14,11 @@ spec:
     helm:
       values: |
         domain: smongiar
-        system: ${{values.application.split("/")[1]}}
+        system: ${{ values.application.split("/")[1] }}
         component: ${{ values.api_id }}
+        groupid: ${{ values.group_id }}
+        apicurioRegistry: ${{ values.service_registry_provider_url.split("://")[1] }}
+        mockRegistry: ${{ values.mock_provider_url.split("://")[1] }}
   destination:
     server: https://kubernetes.default.svc
     namespace: ${{values.application.split("/")[1]}}-build

@@ -95,7 +95,7 @@ spec:
       action: github:webhook
       input: 
         repoUrl: github.com?repo=${{ parameters.application.split("/")[1] }}-${{ parameters.api_id }}-api&owner=smongiar
-        webhookUrl: https://webhook-${{ parameters.application.split("/")[1] }}-${{ parameters.api_id }}-el.${{ parameters.cluster_domain }}
+        webhookUrl: https://webhook-${{ parameters.application.split("/")[1] }}-${{ parameters.api_id }}-api-el-${{ parameters.application.split("/")[1] }}-build.${{ parameters.cluster_domain }}
         webhookSecret: 'mysecret'
         events: ['push']
         active: true
