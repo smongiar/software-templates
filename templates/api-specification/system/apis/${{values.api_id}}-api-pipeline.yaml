@@ -17,8 +17,8 @@ spec:
         system: ${{ values.application.split("/")[1] }}
         component: ${{ values.api_id }}
         groupid: ${{ values.group_id }}
-        apicurioRegistry: ${{ values.service_registry_provider_url | replace('http://', '') }}
-        mockRegistry: ${{ values.mock_provider_url | replace('http://', '') }}
+        apicurioRegistry: ${{ values.service_registry_provider_url | replace(\"https:.*/\", \"\") }}
+        mockRegistry: ${{ values.mock_provider_url | replace(\"https:.*/\", \"\") }}
   destination:
     server: https://kubernetes.default.svc
     namespace: ${{values.application.split("/")[1]}}-build
