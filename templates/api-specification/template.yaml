@@ -15,6 +15,9 @@ spec:
         - owner
         - application
         - description
+        - group_id
+        - mock_provider_url
+        - service_registry_provider_url
         - cluster_domain
 
       properties:
